@@ -33,6 +33,9 @@ dependencies {
 
     implementation 'io.quarkus:quarkus-spring-data-jpa'
 
+    implementation 'org.apache.commons:commons-lang3:3.11'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
