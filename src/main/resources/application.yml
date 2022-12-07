@@ -1,0 +1,89 @@
+quarkus:
+  hibernate-orm:
+    validate-in-dev-mode: false
+    jdbc:
+      statement-batch-size: 50
+      unsupported-properties:
+        "order-inserts": true
+        "order-updates": true
+  datasource:
+    jdbc:
+      driver: com.p6spy.engine.spy.P6SpyDriver
+      url: ${JDBC_URL:jdbc:p6spy:postgresql://0.0.0.0:5430/bookkeeping}
+    username: ${JDBC_LOGIN:localOnlyLogin}
+    db-kind: postgresql
+    password: ${JDBC_PASSWORD:localOnlyPass}
+  flyway:
+    migrate-at-start: true
+    out-of-order: true
+    schemas: public
+  http:
+    access-log:
+      enabled: ${HTTP_LOGS_ENABLED:false}
+    auth:
+      permission:
+        default:
+          policy: authenticated
+          paths: /*
+        swagger:
+          policy: permit
+          paths: /q/openapi,/documentation/*,/branding/*
+        flyway:
+          policy: permit
+          paths: /api/v1/database/migrate
+    cors:
+      ~: true
+      headers: accept,authorization,content-type,x-requested-with,Time-Zone
+      methods: GET,POST,PUT,PATCH,DELETE,OPTIONS
+      origins: '*'
+  log:
+    category:
+      "io.quarkus.bootstrap":
+        level: WARN
+      "software.amazon.awssdk":
+        level: WARN
+      "software.amazon.awssdk.request":
+        level: DEBUG
+      "org.jboss.threads":
+        level: WARN
+      "p6spy":
+        level: ${SQL_LOGS_LEVEL:INFO}
+    console:
+      format: 'traceId: %X{X-Amzn-Trace-Id} | userEmail: %X{userEmail} [%-5p] %c{1}
+        %C - %m%n'
+    level: INFO
+  swagger-ui:
+    path: /documentation
+    theme: outline
+  oidc:
+    enabled: true
+    introspection-path: .well-known/openid-configuration
+    discovery-enabled: 'false'
+    auth-server-url: ${AUTH_API_URL:authApiUrl}
+    client-id: ${AUTH_API_CLIENT_ID:authApiClientId}
+    credentials:
+      secret: ${AUTH_SECRET:authSecret}
+    token:
+      audience: ${AUTH_API_AUDIENCE:authApiAudience}
+    jwks-path: .well-known/jwks.json
+  vertx:
+    warning-exception-time: '15'
+  native:
+    additional-build-args: --report-unsupported-elements-at-runtime, -H:ReflectionConfigurationFiles=reflection-config.json
+
+'%dev':
+  quarkus:
+    http:
+      auth:
+        permission:
+          default:
+            policy: permit
+            paths: /*
+    flyway:
+      locations: db/migration/common
+      migrate-at-start: 'false'
+    oidc:
+      enabled: 'false'
+
+p6spy:
+  multiline-sql: ${MULTILINE_SQL:true}

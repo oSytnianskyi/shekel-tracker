@@ -1,0 +1,80 @@
+plugins {
+    id 'java'
+    id 'io.quarkus' version "${quarkusPlatformVersion}"
+    id "net.ltgt.errorprone" version "2.0.2"
+}
+
+group 'org.local'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-arc'
+    implementation 'io.quarkus:quarkus-config-yaml'
+    implementation 'io.quarkus:quarkus-smallrye-openapi'
+
+    implementation 'com.auth0:auth0:1.42.0'
+    implementation 'io.quarkus:quarkus-oidc'
+
+    implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.quarkus:quarkus-rest-client'
+    implementation 'io.quarkus:quarkus-resteasy-jackson'
+
+    implementation 'p6spy:p6spy:3.9.1'
+    implementation 'io.quarkus:quarkus-flyway'
+    implementation 'io.quarkus:quarkus-jdbc-postgresql'
+
+    implementation 'io.quarkus:quarkus-hibernate-orm'
+    implementation 'io.quarkus:quarkus-hibernate-validator'
+
+    implementation 'io.quarkus:quarkus-spring-data-jpa'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+import net.ltgt.gradle.errorprone.CheckSeverity
+
+tasks.withType(JavaCompile) {
+    options.errorprone {
+        disableAllWarnings = true
+        enabled = false
+        // disable warnings in generated code; AutoValue code fails UnnecessaryParentheses check
+        disableWarningsInGeneratedCode = true
+        excludedPaths = ".*/build/generated/.*"
+        check("WildcardImport", CheckSeverity.ERROR)
+        check("RemoveUnusedImports", CheckSeverity.ERROR)
+        check("FieldCanBeFinal", CheckSeverity.OFF)
+        check("ConstantField", CheckSeverity.ERROR)
+        check("UnusedMethod", CheckSeverity.ERROR)
+        check("UnusedVariable", CheckSeverity.ERROR)
+        check("ReturnsNullCollection", CheckSeverity.ERROR)
+        check("UnnecessaryBoxedVariable", CheckSeverity.ERROR)
+        check("UnnecessaryBoxedAssignment", CheckSeverity.ERROR)
+        check("UngroupedOverloads", CheckSeverity.ERROR)
+        check("SwitchDefault", CheckSeverity.ERROR)
+        check("PrivateConstructorForUtilityClass", CheckSeverity.ERROR)
+        check("UseEnumSwitch", CheckSeverity.ERROR)
+        check("MultipleTopLevelClasses", CheckSeverity.ERROR)
+        check("UnnecessaryStaticImport", CheckSeverity.ERROR)
+        check("JavaTimeDefaultTimeZone", CheckSeverity.OFF)
+        check("BadImport", CheckSeverity.ERROR)
+    }
+}
