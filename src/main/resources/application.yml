@@ -80,8 +80,10 @@ quarkus:
             policy: permit
             paths: /*
     flyway:
-      locations: db/migration/common
+      schemas: public
+      out-of-order: true
       migrate-at-start: 'false'
+      locations: db/migration/common
     oidc:
       enabled: 'false'
 
