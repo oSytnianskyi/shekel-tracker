@@ -1,5 +1,6 @@
 package com.bookkeeping.service.impl;
 
+import com.bookkeeping.dto.CategoryPreviewDto;
 import com.bookkeeping.dto.CreateCategoryDto;
 import com.bookkeeping.dto.CreatedEntityIdDto;
 import com.bookkeeping.entity.Category;
@@ -10,6 +11,7 @@ import com.bookkeeping.service.InternalUserService;
 import com.bookkeeping.util.MapperUtil;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -22,9 +24,12 @@ public class CategoryServiceImpl implements CategoryService {
   private final CategoryRepository categoryRepository;
 
   @Override
-  public List<String> getCategoriesNames() {
+  public List<CategoryPreviewDto> getCategoriesPreview() {
     Long userId = internalUserService.getCurrentUserId();
-    return categoryRepository.findAllNamesByUserId(userId);
+    List<Category> categories = categoryRepository.findAllByUserId(userId);
+    return categories.stream()
+      .map(MapperUtil.CATEGORY_MAPPER::toPreviewDto)
+      .collect(Collectors.toList());
   }
 
   @Override

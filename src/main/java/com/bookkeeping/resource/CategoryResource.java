@@ -1,5 +1,6 @@
 package com.bookkeeping.resource;
 
+import com.bookkeeping.dto.CategoryPreviewDto;
 import com.bookkeeping.dto.CreateCategoryDto;
 import com.bookkeeping.dto.CreatedEntityIdDto;
 import com.bookkeeping.service.CategoryService;
@@ -26,8 +27,8 @@ public class CategoryResource {
   private final CategoryService categoryService;
 
   @GET
-  public List<String> getCategoriesNames() {
-    return categoryService.getCategoriesNames();
+  public List<CategoryPreviewDto> getCategoriesPreview() {
+    return categoryService.getCategoriesPreview();
   }
 
   @POST
