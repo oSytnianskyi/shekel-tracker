@@ -1,4 +1,4 @@
-package com.bookkeeping;
+package com.bookkeeping.exception.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

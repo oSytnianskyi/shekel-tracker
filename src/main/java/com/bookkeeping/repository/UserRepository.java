@@ -1,4 +1,4 @@
-package com.bookkeeping;
+package com.bookkeeping.repository;
 
 import com.bookkeeping.entity.User;
 

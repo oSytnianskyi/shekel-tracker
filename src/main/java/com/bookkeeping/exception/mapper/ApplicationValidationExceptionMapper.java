@@ -1,6 +1,6 @@
 package com.bookkeeping.exception.mapper;
 
-import com.bookkeeping.ApplicationExceptionDto;
+import com.bookkeeping.exception.dto.ApplicationExceptionDto;
 import com.bookkeeping.exception.ApplicationValidationException;
 
 import javax.ws.rs.core.Response;
