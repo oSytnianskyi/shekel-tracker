@@ -1,0 +1,42 @@
+name: Deploy backend
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        type: choice
+        options:
+          - staging
+          - prod
+        description: 'Environment'
+        required: false
+        default: 'staging'
+jobs:
+  build-and-deploy:
+    name: "Deploy api [ENV:${{ github.event.inputs.env }}]"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build native app
+        run: |
+          cd api
+          chmod +x gradlew
+          ./gradlew clean build -x test -Dquarkus.package.type=native -Dquarkus.native.container-build=true -Dquarkus.swagger-ui.always-include=true
+
+      - name: Save native build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: native-build
+          path: api/build/function.zip
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+      - name: Deploy API to AWS
+        run: |
+          chmod +x .github/deploy_backend.sh
+          ./.github/deploy_backend.sh us-west-2 ${{ github.event.inputs.env }}
