@@ -1,6 +1,7 @@
 package com.bookkeeping.util;
 
 import com.bookkeeping.mapper.CategoryMapper;
+import com.bookkeeping.mapper.TransactionMapper;
 import com.bookkeeping.mapper.UserMapper;
 
 import org.mapstruct.factory.Mappers;
@@ -15,4 +16,7 @@ public final class MapperUtil {
 
   // Category
   public static final CategoryMapper CATEGORY_MAPPER = Mappers.getMapper(CategoryMapper.class);
+
+  // Transaction
+  public static final TransactionMapper TRANSACTION_MAPPER = Mappers.getMapper(TransactionMapper.class);
 }
