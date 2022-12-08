@@ -47,6 +47,10 @@ public class User {
   @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
   List<Transaction> transactions = new ArrayList<>();
 
+  @Setter(AccessLevel.NONE)
+  @OneToMany(mappedBy = "user", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
+  List<Account> accounts = new ArrayList<>();
+
   private void setCategories(List<Category> categories) {
     for (Category category : categories) {
       category.setUser(this);
@@ -61,5 +65,13 @@ public class User {
     }
     this.transactions.clear();
     this.transactions.addAll(transactions);
+  }
+
+  private void setAccounts(List<Account> accounts) {
+    for (Account account : accounts) {
+      account.setUser(this);
+    }
+    this.accounts.clear();
+    this.accounts.addAll(accounts);
   }
 }

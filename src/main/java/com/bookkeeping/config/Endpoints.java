@@ -16,4 +16,7 @@ public class Endpoints {
 
   // Categories
   public static final String CATEGORIES = API_PREFIX_V1 + "/categories";
+
+  // Accounts
+  public static final String ACCOUNTS = API_PREFIX_V1 + "/accounts";
 }

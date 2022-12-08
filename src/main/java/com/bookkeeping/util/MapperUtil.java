@@ -1,5 +1,6 @@
 package com.bookkeeping.util;
 
+import com.bookkeeping.mapper.AccountMapper;
 import com.bookkeeping.mapper.CategoryMapper;
 import com.bookkeeping.mapper.TransactionMapper;
 import com.bookkeeping.mapper.UserMapper;
@@ -19,4 +20,7 @@ public final class MapperUtil {
 
   // Transaction
   public static final TransactionMapper TRANSACTION_MAPPER = Mappers.getMapper(TransactionMapper.class);
+
+  // Account
+  public static final AccountMapper ACCOUNT_MAPPER = Mappers.getMapper(AccountMapper.class);
 }
