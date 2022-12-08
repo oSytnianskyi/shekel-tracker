@@ -1,7 +1,10 @@
 package com.bookkeeping.service.impl;
 
 import com.bookkeeping.dto.AccountDto;
+import com.bookkeeping.dto.CreateAccountDto;
+import com.bookkeeping.dto.CreatedEntityIdDto;
 import com.bookkeeping.entity.Account;
+import com.bookkeeping.entity.User;
 import com.bookkeeping.repository.AccountRepository;
 import com.bookkeeping.service.AccountService;
 import com.bookkeeping.service.InternalUserService;
@@ -27,5 +30,16 @@ public class AccountServiceImpl implements AccountService {
     return accounts.stream()
       .map(MapperUtil.ACCOUNT_MAPPER::toDto)
       .collect(Collectors.toList());
+  }
+
+  @Override
+  public CreatedEntityIdDto createAccount(CreateAccountDto accountDto) {
+    User user = internalUserService.getCurrentUser();
+
+    Account account = MapperUtil.ACCOUNT_MAPPER.toEntity(accountDto, user);
+    Account createdAccount = accountRepository.saveAndFlush(account);
+
+    Long accountId = createdAccount.getId();
+    return new CreatedEntityIdDto(accountId);
   }
 }
