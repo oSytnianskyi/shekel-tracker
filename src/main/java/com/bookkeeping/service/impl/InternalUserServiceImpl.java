@@ -1,7 +1,7 @@
 package com.bookkeeping.service.impl;
 
-import com.bookkeeping.repository.UserRepository;
 import com.bookkeeping.entity.User;
+import com.bookkeeping.repository.UserRepository;
 import com.bookkeeping.service.InternalUserService;
 
 import javax.enterprise.context.ApplicationScoped;

@@ -17,37 +17,39 @@ dependencies {
     implementation 'io.quarkus:quarkus-config-yaml'
     implementation 'io.quarkus:quarkus-smallrye-openapi'
 
+    implementation 'io.quarkus:quarkus-hibernate-orm'
+    implementation 'io.quarkus:quarkus-hibernate-validator'
+    implementation 'org.hibernate:hibernate-jpamodelgen:5.5.0.Final'
+    annotationProcessor 'org.hibernate:hibernate-jpamodelgen:5.5.0.Final'
+
+    implementation 'io.quarkus:quarkus-spring-data-jpa'
+
     implementation 'io.quarkus:quarkus-oidc'
     implementation 'io.quarkus:quarkus-smallrye-jwt'
 
-    implementation 'io.quarkus:quarkus-resteasy'
-    implementation 'io.quarkus:quarkus-resteasy-jackson'
-
     implementation 'io.quarkus:quarkus-rest-client'
     implementation 'io.quarkus:quarkus-rest-client-jackson'
+
+    implementation 'io.quarkus:quarkus-resteasy'
+    implementation 'io.quarkus:quarkus-resteasy-jackson'
 
     implementation 'p6spy:p6spy:3.9.1'
     implementation 'io.quarkus:quarkus-flyway'
     implementation 'io.quarkus:quarkus-jdbc-postgresql'
 
-    implementation 'io.quarkus:quarkus-hibernate-orm'
-    implementation 'io.quarkus:quarkus-hibernate-validator'
-
-    implementation 'io.quarkus:quarkus-spring-data-jpa'
-
-    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
-    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
-
     implementation 'org.apache.commons:commons-lang3:3.11'
     implementation 'org.apache.commons:commons-collections4:4.4'
 
-    compileOnly 'org.projectlombok:lombok:1.18.24'
+    compileOnly 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 test {
@@ -55,6 +57,11 @@ test {
 }
 
 compileJava {
+    options.compilerArgs = [
+            '-Amapstruct.unmappedTargetPolicy=ERROR',
+            '-Amapstruct.defaultComponentModel=default',
+            '-parameters'
+    ]
     options.encoding = 'UTF-8'
 }
 
