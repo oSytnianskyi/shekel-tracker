@@ -1,7 +1,7 @@
 package com.bookkeeping.resource;
 
 import com.bookkeeping.dto.CurrentUserDto;
-import com.bookkeeping.service.CurrentUserService;
+import com.bookkeeping.service.UserService;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -18,10 +18,10 @@ import static com.bookkeeping.config.Endpoints.CURRENT_USER;
 @Consumes(MediaType.APPLICATION_JSON)
 @RequiredArgsConstructor
 public class CurrentUserResource {
-  private final CurrentUserService currentUserService;
+  private final UserService userService;
 
   @GET
   public CurrentUserDto getCurrentUser() {
-    return currentUserService.getCurrentUser();
+    return userService.getCurrentUser();
   }
 }
