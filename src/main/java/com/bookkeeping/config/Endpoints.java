@@ -10,4 +10,7 @@ public class Endpoints {
 
   // Database
   public static final String DATABASE = API_PREFIX_V1 + "/database";
+
+  // Current user
+  public static final String CURRENT_USER = API_PREFIX_V1 + "/current";
 }

@@ -35,6 +35,9 @@ dependencies {
 
     implementation 'io.quarkus:quarkus-spring-data-jpa'
 
+    implementation 'org.mapstruct:mapstruct:1.4.2.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+
     implementation 'org.apache.commons:commons-lang3:3.11'
     implementation 'org.apache.commons:commons-collections4:4.4'
 

@@ -1,4 +1,4 @@
-package com.bookkeeping.exception.dto;
+package com.bookkeeping.dto;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.AllArgsConstructor;
@@ -11,6 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @RegisterForReflection
-public class ApplicationExceptionDto {
-  private String message;
+public class CurrentUserDto {
+  private String email;
+  private String firstName;
+  private String lastName;
 }
