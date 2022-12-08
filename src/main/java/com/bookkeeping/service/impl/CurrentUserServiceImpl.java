@@ -41,4 +41,11 @@ public class CurrentUserServiceImpl implements CurrentUserService {
     User user = userRepository.findByEmail(email);
     return MapperUtil.USER_MAPPER.toDto(user);
   }
+
+  @Override
+  public Long getCurrentUserId() {
+    String email = getCurrentUserEmail();
+    User user = userRepository.findByEmail(email);
+    return user.getId();
+  }
 }

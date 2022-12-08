@@ -6,4 +6,6 @@ public interface CurrentUserService {
   String getCurrentUserEmail();
 
   CurrentUserDto getCurrentUser();
+
+  Long getCurrentUserId();
 }

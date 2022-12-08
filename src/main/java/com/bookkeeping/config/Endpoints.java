@@ -13,4 +13,7 @@ public class Endpoints {
 
   // Current user
   public static final String CURRENT_USER = API_PREFIX_V1 + "/current";
+
+  // Categories
+  public static final String CATEGORIES = API_PREFIX_V1 + "/categories";
 }
