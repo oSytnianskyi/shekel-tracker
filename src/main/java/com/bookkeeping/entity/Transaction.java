@@ -46,4 +46,8 @@ public class Transaction {
   @JoinColumn(name = "category_id")
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   private Category category;
+
+  @JoinColumn(name = "user_id")
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  private User user;
 }
