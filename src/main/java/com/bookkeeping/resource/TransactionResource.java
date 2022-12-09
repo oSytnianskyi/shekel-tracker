@@ -37,6 +37,6 @@ public class TransactionResource {
   public CreatedEntityIdDto createTransaction(@PathParam("accountId") Long accountId,
                                               @PathParam("categoryId") Long categoryId,
                                               CreateTransactionDto transactionDto) {
-    return transactionService.createTransaction(categoryId, transactionDto);
+    return transactionService.createTransaction(accountId, categoryId, transactionDto);
   }
 }

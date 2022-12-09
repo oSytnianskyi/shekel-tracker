@@ -9,5 +9,5 @@ import java.util.List;
 public interface TransactionService {
   List<TransactionDto> getTransactions(Long categoryId);
 
-  CreatedEntityIdDto createTransaction(Long categoryId, CreateTransactionDto transactionDto);
+  CreatedEntityIdDto createTransaction(Long accountId, Long categoryId, CreateTransactionDto transactionDto);
 }
