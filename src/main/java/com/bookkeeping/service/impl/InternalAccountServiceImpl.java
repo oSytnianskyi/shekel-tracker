@@ -18,8 +18,8 @@ public class InternalAccountServiceImpl implements InternalAccountService {
 
   @Override
   public Account getAccount(Long accountId) {
-    String email = internalUserService.getCurrentUserEmail();
-    return accountRepository.findByIdAndUserEmail(accountId, email)
+    Long userId = internalUserService.getCurrentUserId();
+    return accountRepository.findByIdAndUserId(accountId, userId)
       .orElseThrow(() -> new BookkeepingResourceNotFoundException(String.format("Account by id: %s, not found", accountId)));
   }
 }

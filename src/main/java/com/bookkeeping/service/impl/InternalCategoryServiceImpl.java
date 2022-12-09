@@ -18,8 +18,8 @@ public class InternalCategoryServiceImpl implements InternalCategoryService {
 
   @Override
   public Category getCategory(Long categoryId) {
-    String email = internalUserService.getCurrentUserEmail();
-    return categoryRepository.findByIdAndUserEmail(categoryId, email)
+    Long userId = internalUserService.getCurrentUserId();
+    return categoryRepository.findByIdAndUserId(categoryId, userId)
       .orElseThrow(() -> new BookkeepingResourceNotFoundException(String.format("Category by id: %s, not found", categoryId)));
   }
 }

@@ -44,4 +44,10 @@ public class CategoryResource {
   public CreatedEntityIdDto createCategory(@PathParam("accountId") Long accountId, @Valid CreateCategoryDto createCategoryDto) {
     return categoryService.createCategory(accountId, createCategoryDto);
   }
+
+  @GET
+  @Path("/{accountId}/categories")
+  public List<CategoryPreviewDto> getAccountCategoriesPreview(@PathParam("accountId") Long accountId) {
+    return categoryService.getAccountCategoriesPreview(accountId);
+  }
 }

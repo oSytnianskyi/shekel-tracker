@@ -59,4 +59,13 @@ public class CategoryServiceImpl implements CategoryService {
     Long categoryId = createdCategory.getId();
     return new CreatedEntityIdDto(categoryId);
   }
+
+  @Override
+  public List<CategoryPreviewDto> getAccountCategoriesPreview(Long accountId) {
+    Long userId = internalUserService.getCurrentUserId();
+    List<Category> categories = categoryRepository.findAllByAccountIdAndUserId(accountId, userId);
+    return categories.stream()
+      .map(MapperUtil.CATEGORY_MAPPER::toPreviewDto)
+      .collect(Collectors.toList());
+  }
 }

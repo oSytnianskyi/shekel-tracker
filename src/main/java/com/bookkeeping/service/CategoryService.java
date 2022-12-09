@@ -12,4 +12,6 @@ public interface CategoryService {
   CreatedEntityIdDto createCategory(CreateCategoryDto createCategoryDto);
 
   CreatedEntityIdDto createCategory(Long accountId, CreateCategoryDto createCategoryDto);
+
+  List<CategoryPreviewDto> getAccountCategoriesPreview(Long accountId);
 }
