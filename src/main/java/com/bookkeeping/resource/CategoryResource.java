@@ -17,9 +17,9 @@ import javax.ws.rs.core.MediaType;
 
 import lombok.RequiredArgsConstructor;
 
-import static com.bookkeeping.config.Endpoints.API_PREFIX_V1;
+import static com.bookkeeping.config.Endpoints.ACCOUNTS;
 
-@Path(API_PREFIX_V1)
+@Path(ACCOUNTS)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @RequiredArgsConstructor
@@ -27,13 +27,13 @@ public class CategoryResource {
   private final CategoryService categoryService;
 
   @GET
-  @Path("/accounts/categories")
+  @Path("/categories")
   public List<CategoryPreviewDto> getCategoriesPreview() {
     return categoryService.getCategoriesPreview();
   }
 
   @POST
-  @Path("/accounts/categories")
+  @Path("/categories")
   public CreatedEntityIdDto createCategory(@Valid CreateCategoryDto createCategoryDto) {
     return categoryService.createCategory(createCategoryDto);
   }
