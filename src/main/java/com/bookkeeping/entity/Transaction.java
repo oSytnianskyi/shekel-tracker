@@ -50,4 +50,8 @@ public class Transaction {
   @JoinColumn(name = "user_id")
   @ManyToOne(fetch = FetchType.LAZY, optional = false)
   private User user;
+
+  @JoinColumn(name = "account_id")
+  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+  private Account account;
 }

@@ -1,6 +1,9 @@
 package com.bookkeeping.dto;
 
-import javax.validation.constraints.NotBlank;
+import com.bookkeeping.meta.TransactionType;
+
+import java.math.BigDecimal;
+
 import javax.validation.constraints.NotNull;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
@@ -18,8 +21,8 @@ public class CreateTransactionDto {
   private String description;
 
   @NotNull
-  private String amount;
+  private BigDecimal amount;
 
-  @NotBlank
-  private String type;
+  @NotNull
+  private TransactionType type;
 }

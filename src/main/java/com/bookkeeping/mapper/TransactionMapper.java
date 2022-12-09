@@ -2,6 +2,7 @@ package com.bookkeeping.mapper;
 
 import com.bookkeeping.dto.CreateTransactionDto;
 import com.bookkeeping.dto.TransactionDto;
+import com.bookkeeping.entity.Account;
 import com.bookkeeping.entity.Category;
 import com.bookkeeping.entity.Transaction;
 import com.bookkeeping.entity.User;
@@ -20,7 +21,8 @@ public interface TransactionMapper {
 
   @Mapping(target = "id", ignore = true)
   @Mapping(target = "user", source = "user")
+  @Mapping(target = "account", source = "account")
   @Mapping(target = "category", source = "category")
   @Mapping(target = "description", source = "transactionDto.description")
-  Transaction toEntity(CreateTransactionDto transactionDto, Category category, User user);
+  Transaction toEntity(CreateTransactionDto transactionDto, Category category, User user, Account account);
 }

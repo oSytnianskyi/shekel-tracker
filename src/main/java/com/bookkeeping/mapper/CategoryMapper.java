@@ -12,7 +12,9 @@ import org.mapstruct.Mapping;
 public interface CategoryMapper {
 
   @Mapping(target = "id", ignore = true)
+  @Mapping(target = "accounts", ignore = true)
   @Mapping(target = "transactions", ignore = true)
+  @Mapping(target = "user", source = "user")
   Category toEntity(CreateCategoryDto categoryDto, User user);
 
   CategoryPreviewDto toPreviewDto(Category category);

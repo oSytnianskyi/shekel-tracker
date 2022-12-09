@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -46,6 +47,9 @@ public class Category {
   @Setter(AccessLevel.NONE)
   @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
   private List<Transaction> transactions = new ArrayList<>();
+
+  @ManyToMany(mappedBy = "categories")
+  private List<Account> accounts = new ArrayList<>();
 
   private void setCategories(List<Transaction> transactions) {
     for (Transaction transaction : transactions) {
