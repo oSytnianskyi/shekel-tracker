@@ -1,7 +1,12 @@
 package com.bookkeeping.entity;
 
+import org.hibernate.Hibernate;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -48,8 +53,9 @@ public class Category {
   @OneToMany(mappedBy = "category", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
   private List<Transaction> transactions = new ArrayList<>();
 
+  @Setter(AccessLevel.NONE)
   @ManyToMany(mappedBy = "categories")
-  private List<Account> accounts = new ArrayList<>();
+  private Set<Account> accounts = new HashSet<>();
 
   private void setCategories(List<Transaction> transactions) {
     for (Transaction transaction : transactions) {
@@ -57,5 +63,28 @@ public class Category {
     }
     this.transactions.clear();
     this.transactions.addAll(transactions);
+  }
+
+  public void addAccount(Account account) {
+    this.accounts.add(account);
+    account.getCategories().add(this);
+  }
+
+  private void removeAccount(Account account) {
+    this.accounts.remove(account);
+    account.getCategories().remove(this);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+    Category category = (Category) o;
+    return id != null && Objects.equals(id, category.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
   }
 }

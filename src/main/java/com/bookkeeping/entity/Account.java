@@ -1,8 +1,13 @@
 package com.bookkeeping.entity;
 
+import org.hibernate.Hibernate;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -60,7 +65,7 @@ public class Account {
     joinColumns = @JoinColumn(name = "account_id"),
     inverseJoinColumns = @JoinColumn(name = "category_id")
   )
-  private List<Category> categories = new ArrayList<>();
+  private Set<Category> categories = new HashSet<>();
 
   @Setter(AccessLevel.NONE)
   @OneToMany(mappedBy = "account", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
@@ -74,5 +79,18 @@ public class Account {
   public void removeCategory(Category category) {
     categories.remove(category);
     category.getAccounts().remove(this);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+    Account account = (Account) o;
+    return id != null && Objects.equals(id, account.id);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
   }
 }

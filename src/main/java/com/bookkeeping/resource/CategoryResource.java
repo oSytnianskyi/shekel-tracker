@@ -12,6 +12,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -36,5 +37,11 @@ public class CategoryResource {
   @Path("/categories")
   public CreatedEntityIdDto createCategory(@Valid CreateCategoryDto createCategoryDto) {
     return categoryService.createCategory(createCategoryDto);
+  }
+
+  @POST
+  @Path("/{accountId}/categories")
+  public CreatedEntityIdDto createCategory(@PathParam("accountId") Long accountId, @Valid CreateCategoryDto createCategoryDto) {
+    return categoryService.createCategory(accountId, createCategoryDto);
   }
 }
