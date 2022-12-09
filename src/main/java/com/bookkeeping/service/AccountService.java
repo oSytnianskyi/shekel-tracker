@@ -10,4 +10,6 @@ public interface AccountService {
   List<AccountDto> getAccounts();
 
   CreatedEntityIdDto createAccount(CreateAccountDto accountDto);
+
+  AccountDto getAccount(Long accountId);
 }

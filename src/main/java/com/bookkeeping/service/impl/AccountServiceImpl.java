@@ -7,6 +7,7 @@ import com.bookkeeping.entity.Account;
 import com.bookkeeping.entity.User;
 import com.bookkeeping.repository.AccountRepository;
 import com.bookkeeping.service.AccountService;
+import com.bookkeeping.service.InternalAccountService;
 import com.bookkeeping.service.InternalUserService;
 import com.bookkeeping.util.MapperUtil;
 
@@ -20,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 @ApplicationScoped
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
+  private final InternalAccountService internalAccountService;
   private final InternalUserService internalUserService;
   private final AccountRepository accountRepository;
 
@@ -41,5 +43,11 @@ public class AccountServiceImpl implements AccountService {
 
     Long accountId = createdAccount.getId();
     return new CreatedEntityIdDto(accountId);
+  }
+
+  @Override
+  public AccountDto getAccount(Long accountId) {
+    Account account = internalAccountService.getAccount(accountId);
+    return MapperUtil.ACCOUNT_MAPPER.toDto(account);
   }
 }
