@@ -17,9 +17,9 @@ import javax.ws.rs.core.MediaType;
 
 import lombok.RequiredArgsConstructor;
 
-import static com.bookkeeping.config.Endpoints.CATEGORIES;
+import static com.bookkeeping.config.Endpoints.ACCOUNTS;
 
-@Path(CATEGORIES)
+@Path(ACCOUNTS)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @RequiredArgsConstructor
@@ -27,14 +27,16 @@ public class TransactionResource {
   private final TransactionService transactionService;
 
   @GET
-  @Path("/{categoryId}/transactions")
+  @Path("/categories/{categoryId}/transactions")
   public List<TransactionDto> getTransactions(@PathParam("categoryId") Long categoryId) {
     return transactionService.getTransactions(categoryId);
   }
 
   @POST
-  @Path("/{categoryId}/transactions")
-  public CreatedEntityIdDto createTransaction(@PathParam("categoryId") Long categoryId, CreateTransactionDto transactionDto) {
+  @Path("/{accountId}/categories/{categoryId}/transactions")
+  public CreatedEntityIdDto createTransaction(@PathParam("accountId") Long accountId,
+                                              @PathParam("categoryId") Long categoryId,
+                                              CreateTransactionDto transactionDto) {
     return transactionService.createTransaction(categoryId, transactionDto);
   }
 }
