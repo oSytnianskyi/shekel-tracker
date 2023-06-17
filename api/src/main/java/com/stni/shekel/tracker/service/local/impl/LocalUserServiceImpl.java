@@ -12,8 +12,8 @@ import lombok.RequiredArgsConstructor;
 @ApplicationScoped
 @RequiredArgsConstructor
 public class LocalUserServiceImpl implements LocalUserService {
-  private final UserRepository userRepository;
   private final LocalJwtService localJwtService;
+  private final UserRepository userRepository;
 
   @Override
   public User getCurrentUser() {
