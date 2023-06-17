@@ -8,14 +8,21 @@ group 'com.stni'
 version '1.0'
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:quarkus-amazon-services-bom:${quarkusPlatformVersion}")
     implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+
     implementation 'io.quarkus:quarkus-arc'
     implementation 'io.quarkus:quarkus-config-yaml'
     implementation 'io.quarkus:quarkus-smallrye-openapi'
+
+    implementation 'software.amazon.awssdk:url-connection-client'
+    implementation 'io.quarkiverse.amazonservices:quarkus-amazon-dynamodb'
+    implementation 'io.quarkiverse.amazonservices:quarkus-amazon-dynamodb-enhanced'
 
     implementation 'io.quarkus:quarkus-oidc'
     implementation 'io.quarkus:quarkus-smallrye-jwt'

@@ -1,0 +1,110 @@
+[
+  {
+    "name": "java.util.Calendar[]",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "java.net.URL[]",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "java.lang.Float[]",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "java.util.Date[]",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "java.sql.Date[]",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "java.sql.Time[]",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "java.sql.Timestamp[]",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "java.lang.String",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredMethods": true,
+    "allDeclaredClasses": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.commons.logging.LogFactory",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredClasses": true,
+    "allDeclaredMethods": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.commons.logging.impl.SimpleLog",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredClasses": true,
+    "allDeclaredMethods": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "org.apache.commons.logging.impl.LogFactoryImpl",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredClasses": true,
+    "allDeclaredMethods": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  },
+  {
+    "name": "com.opencsv.**",
+    "allPublicMethods": true,
+    "allPublicClasses": true,
+    "allDeclaredClasses": true,
+    "allDeclaredMethods": true,
+    "allPublicConstructors": true,
+    "allDeclaredConstructors": true
+  }
+]

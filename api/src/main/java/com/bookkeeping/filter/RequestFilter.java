@@ -7,14 +7,13 @@ import com.bookkeeping.service.InternalUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
 
-import javax.inject.Inject;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.ext.Provider;
 
 @Provider
 public class RequestFilter implements ContainerRequestFilter {
-  @Inject
+
   InternalUserService internalUserService;
 
   @Override
