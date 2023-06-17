@@ -13,4 +13,5 @@ import lombok.Setter;
 @RegisterForReflection
 public class ApplicationExceptionDto {
   private String message;
+  //TODO: migrate to record
 }

@@ -43,7 +43,6 @@ public class InternalUserServiceImpl implements InternalUserService {
 
     if (!exist) {
       User user = createUser(email);
-      userRepository.saveAndFlush(user);
     }
   }
 

@@ -6,10 +6,8 @@ import com.bookkeeping.entity.Account;
 import com.bookkeeping.entity.Category;
 import com.bookkeeping.entity.User;
 
-import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.MappingTarget;
 
 @Mapper
 public interface CategoryMapper {
@@ -28,9 +26,4 @@ public interface CategoryMapper {
   @Mapping(target = "name", source = "categoryDto.name")
   @Mapping(target = "description", source = "categoryDto.description")
   Category toEntity(CreateCategoryDto categoryDto, User user, Account account);
-
-  @AfterMapping
-  default void categoryMapping(@MappingTarget Category category, Account account) {
-    category.addAccount(account);
-  }
 }

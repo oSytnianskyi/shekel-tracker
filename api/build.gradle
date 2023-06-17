@@ -17,13 +17,6 @@ dependencies {
     implementation 'io.quarkus:quarkus-config-yaml'
     implementation 'io.quarkus:quarkus-smallrye-openapi'
 
-    implementation 'io.quarkus:quarkus-hibernate-orm'
-    implementation 'io.quarkus:quarkus-hibernate-validator'
-    implementation 'org.hibernate:hibernate-jpamodelgen:5.5.0.Final'
-    annotationProcessor 'org.hibernate:hibernate-jpamodelgen:5.5.0.Final'
-
-    implementation 'io.quarkus:quarkus-spring-data-jpa'
-
     implementation 'io.quarkus:quarkus-oidc'
     implementation 'io.quarkus:quarkus-smallrye-jwt'
 
@@ -33,10 +26,6 @@ dependencies {
     implementation 'io.quarkus:quarkus-resteasy'
     implementation 'io.quarkus:quarkus-resteasy-jackson'
 
-    implementation 'p6spy:p6spy:3.9.1'
-    implementation 'io.quarkus:quarkus-flyway'
-    implementation 'io.quarkus:quarkus-jdbc-postgresql'
-
     implementation 'org.apache.commons:commons-lang3:3.11'
     implementation 'org.apache.commons:commons-collections4:4.4'
 
@@ -45,6 +34,9 @@ dependencies {
 
     implementation 'org.mapstruct:mapstruct:1.4.2.Final'
     annotationProcessor 'org.mapstruct:mapstruct-processor:1.4.2.Final'
+
+    errorprone 'com.google.errorprone:error_prone_core:2.18.0'
+    errorproneJavac "com.google.errorprone:javac:9+181-r4173-1"
 }
 
 java {

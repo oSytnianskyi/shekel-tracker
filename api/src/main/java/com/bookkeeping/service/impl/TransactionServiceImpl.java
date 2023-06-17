@@ -46,7 +46,7 @@ public class TransactionServiceImpl implements TransactionService {
     Category category = internalCategoryService.getCategory(categoryId);
 
     Transaction transaction = MapperUtil.TRANSACTION_MAPPER.toEntity(transactionDto, category, user, account);
-    Transaction createdTransaction = transactionRepository.save(transaction);
+    Transaction createdTransaction = null;
 
     Long transactionId = createdTransaction.getId();
     return new CreatedEntityIdDto(transactionId);

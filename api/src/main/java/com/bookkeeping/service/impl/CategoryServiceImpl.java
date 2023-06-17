@@ -42,7 +42,7 @@ public class CategoryServiceImpl implements CategoryService {
     User user = internalUserService.getCurrentUser();
 
     Category category = MapperUtil.CATEGORY_MAPPER.toEntity(createCategoryDto, user);
-    Category createdCategory = categoryRepository.saveAndFlush(category);
+    Category createdCategory = null;
 
     Long categoryId = createdCategory.getId();
     return new CreatedEntityIdDto(categoryId);
@@ -54,7 +54,7 @@ public class CategoryServiceImpl implements CategoryService {
     Account account = internalAccountService.getAccount(accountId);
 
     Category category = MapperUtil.CATEGORY_MAPPER.toEntity(createCategoryDto, user, account);
-    Category createdCategory = categoryRepository.save(category);
+    Category createdCategory = null;
 
     Long categoryId = createdCategory.getId();
     return new CreatedEntityIdDto(categoryId);
