@@ -1,7 +1,6 @@
 package com.bookkeeping.resource;
 
-import com.bookkeeping.dto.CurrentUserDto;
-import com.bookkeeping.service.UserService;
+import com.bookkeeping.repository.UserRepository;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -11,17 +10,17 @@ import javax.ws.rs.core.MediaType;
 
 import lombok.RequiredArgsConstructor;
 
-import static com.bookkeeping.config.Endpoints.CURRENT_USER;
-
-@Path(CURRENT_USER)
+@Path("/test")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @RequiredArgsConstructor
-public class CurrentUserResource {
-  private final UserService userService;
+public class TestResource {
+
+  private final UserRepository userRepository;
 
   @GET
-  public CurrentUserDto getCurrentUser() {
-    return userService.getCurrentUser();
+  public String test() {
+    userRepository.test();
+    return "Test";
   }
 }

@@ -25,12 +25,12 @@ public class User {
   @Getter(onMethod_ = {@DynamoDbSortKey, @DynamoDbAttribute(value = "SK")})
   private String sk;
 
-  @Getter(onMethod_ = {@DynamoDbSortKey, @DynamoDbAttribute(value = "email")})
+  @Getter(onMethod_ = {@DynamoDbAttribute(value = "email")})
   private String email;
 
-  @Getter(onMethod_ = {@DynamoDbSortKey, @DynamoDbAttribute(value = "last_name")})
+  @Getter(onMethod_ = {@DynamoDbAttribute(value = "last_name")})
   private String lastName;
 
-  @Getter(onMethod_ = {@DynamoDbSortKey, @DynamoDbAttribute(value = "first_name")})
+  @Getter(onMethod_ = {@DynamoDbAttribute(value = "first_name")})
   private String firstName;
 }

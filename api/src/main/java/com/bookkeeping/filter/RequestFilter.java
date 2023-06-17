@@ -2,7 +2,6 @@ package com.bookkeeping.filter;
 
 import com.bookkeeping.config.ContainerFilterConstants;
 import com.bookkeeping.config.Endpoints;
-import com.bookkeeping.service.InternalUserService;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
@@ -14,7 +13,7 @@ import javax.ws.rs.ext.Provider;
 @Provider
 public class RequestFilter implements ContainerRequestFilter {
 
-  InternalUserService internalUserService;
+//  InternalUserService internalUserService;
 
   @Override
   public void filter(ContainerRequestContext context) {
@@ -22,7 +21,7 @@ public class RequestFilter implements ContainerRequestFilter {
       return;
     }
     MDC.put(ContainerFilterConstants.X_AMZN_TRACE_ID, getTraceId(context.getHeaderString(ContainerFilterConstants.X_AMZN_TRACE_ID)));
-    String email = internalUserService.getCurrentUserEmail();
+    String email = " test - mail =";
     MDC.put(ContainerFilterConstants.USER_EMAIL, email);
   }
 

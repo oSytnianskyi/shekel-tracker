@@ -30,8 +30,6 @@ quarkus:
         level: DEBUG
       "org.jboss.threads":
         level: WARN
-      "p6spy":
-        level: ${SQL_LOGS_LEVEL:INFO}
     console:
       format: 'traceId: %X{X-Amzn-Trace-Id} | userEmail: %X{userEmail} [%-5p] %c{1}
         %C - %m%n'
@@ -65,6 +63,3 @@ quarkus:
             paths: /*
     oidc:
       enabled: 'false'
-
-p6spy:
-  multiline-sql: ${MULTILINE_SQL:true}

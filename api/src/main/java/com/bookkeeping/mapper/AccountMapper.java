@@ -10,11 +10,11 @@ import org.mapstruct.Mapping;
 
 @Mapper
 public interface AccountMapper {
-  AccountDto toDto(Account account);
-
-  @Mapping(target = "id", ignore = true)
-  @Mapping(target = "categories", ignore = true)
-  @Mapping(target = "transactions", ignore = true)
-  @Mapping(target = "user", source = "user")
-  Account toEntity(CreateAccountDto accountDto, User user);
+//  AccountDto toDto(Account account);
+//
+//  @Mapping(target = "id", ignore = true)
+//  @Mapping(target = "categories", ignore = true)
+//  @Mapping(target = "transactions", ignore = true)
+//  @Mapping(target = "user", source = "user")
+//  Account toEntity(CreateAccountDto accountDto, User user);
 }
