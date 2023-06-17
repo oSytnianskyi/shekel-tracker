@@ -15,9 +15,10 @@ import lombok.RequiredArgsConstructor;
 @Consumes(MediaType.APPLICATION_JSON)
 @RequiredArgsConstructor
 public class TestResource {
+  private static final String TEST_MESSAGE = "Test passed";
 
   @GET
   public String test() {
-    return "Test";
+    return TEST_MESSAGE;
   }
 }
