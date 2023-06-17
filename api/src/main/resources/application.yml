@@ -7,14 +7,17 @@ quarkus:
     auth:
       permission:
         default:
-          policy: authenticated
+          policy: ${AUTH_POLICY:authenticated}
           paths: /*
         swagger:
           policy: permit
           paths: /q/openapi,/documentation/*,/branding/*
-        flyway:
+        dev-ui:
+          paths: /q/dev/*
           policy: permit
-          paths: /api/v1/database/migrate
+        test:
+          paths: /test
+          policy: permit
     cors:
       ~: true
       headers: accept,authorization,content-type,x-requested-with,Time-Zone
@@ -39,14 +42,9 @@ quarkus:
     theme: outline
   oidc:
     enabled: true
-    introspection-path: .well-known/openid-configuration
     discovery-enabled: 'false'
     auth-server-url: ${AUTH_API_URL:authApiUrl}
     client-id: ${AUTH_API_CLIENT_ID:authApiClientId}
-    credentials:
-      secret: ${AUTH_SECRET:authSecret}
-    token:
-      audience: ${AUTH_API_AUDIENCE:authApiAudience}
     jwks-path: .well-known/jwks.json
   vertx:
     warning-exception-time: '15'
@@ -59,7 +57,7 @@ quarkus:
       auth:
         permission:
           default:
-            policy: permit
+            policy: authenticated
             paths: /*
     oidc:
-      enabled: 'false'
+      enabled: 'true'

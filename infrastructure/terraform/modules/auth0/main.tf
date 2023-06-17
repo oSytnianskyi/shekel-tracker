@@ -44,25 +44,25 @@ resource "auth0_client" "mobile" {
 
 locals {
   mobile_allowed_logout_urls = [
-    "homeBookkeeping://auth",
-    "org.reactjs.native.example.homeBookkeeping://homeBookkeeping-staging.us.auth0.com/ios/org.reactjs.native.example.homeBookkeeping/callback",
-    "https://homeBookkeeping-staging.us.auth0.com/v2/logouthttps://homeBookkeeping-staging.us.auth0.com/v2/logout",
+    "shekelTracker://auth",
+    "org.reactjs.native.example.shekelTracker://shekelTracker-staging.us.auth0.com/ios/org.reactjs.native.example.shekelTracker/callback",
+    "https://shekelTracker-staging.us.auth0.com/v2/logouthttps://shekelTracker-staging.us.auth0.com/v2/logout",
     "http:/localhost:8080",
-    "com.homeBookkeeping://homeBookkeeping-staging.us.auth0.com/ios/com.homeBookkeeping/callback",
-    "com.homeBookkeeping://homeBookkeeping-staging.us.auth0.com/android/com.homeBookkeeping/callback"
+    "com.shekelTracker://shekelTracker-staging.us.auth0.com/ios/com.shekelTracker/callback",
+    "com.shekelTracker://shekelTracker-staging.us.auth0.com/android/com.shekelTracker/callback"
   ]
-  mobile_allowed_origins = ["https://homeBookkeeping-staging.us.auth0.com/v2/logout"]
+  mobile_allowed_origins = ["https://shekelTracker-staging.us.auth0.com/v2/logout"]
   mobile_callbacks       = [
-    "homeBookkeeping://auth",
-    "org.reactjs.native.example.homeBookkeeping://homeBookkeeping-staging.us.auth0.com/ios/org.reactjs.native.example.homeBookkeeping/callback",
+    "shekelTracker://auth",
+    "org.reactjs.native.example.shekelTracker://shekelTracker-staging.us.auth0.com/ios/org.reactjs.native.example.shekelTracker/callback",
     "http:/localhost:8080",
-    "com.homeBookkeeping://homeBookkeeping-staging.us.auth0.com/ios/com.homeBookkeeping/callback",
-    "com.homeBookkeeping://homeBookkeeping-staging.us.auth0.com/android/com.homeBookkeeping/callback"
+    "com.shekelTracker://shekelTracker-staging.us.auth0.com/ios/com.shekelTracker/callback",
+    "com.shekelTracker://shekelTracker-staging.us.auth0.com/android/com.shekelTracker/callback"
   ]
   mobile_web_origins = [
-    "homeBookkeeping://auth",
-    "org.reactjs.native.example.homeBookkeeping://homeBookkeeping-staging.us.auth0.com/ios/org.reactjs.native.example.homeBookkeeping/callback",
-    "https://homeBookkeeping-staging.us.auth0.com/v2/logout",
+    "shekelTracker://auth",
+    "org.reactjs.native.example.shekelTracker://shekelTracker-staging.us.auth0.com/ios/org.reactjs.native.example.shekelTracker/callback",
+    "https://shekelTracker-staging.us.auth0.com/v2/logout",
     "http:/localhost:8080"
   ]
 }
