@@ -1,0 +1,19 @@
+package com.stni.shekel.tracker.config;
+
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
+public class Endpoints {
+  public static final String API = "/api";
+  public static final String VERSION1 = "/v1";
+  public static final String API_PREFIX_V1 = API + VERSION1;
+
+  // Database
+  public static final String DATABASE = API_PREFIX_V1 + "/database";
+
+  // Current user
+  public static final String CURRENT_USER = API_PREFIX_V1 + "/current";
+
+  // Accounts
+  public static final String ACCOUNTS = API_PREFIX_V1 + "/accounts";
+}
