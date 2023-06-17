@@ -1,24 +1,36 @@
 package com.bookkeeping.entity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import io.quarkus.runtime.annotations.RegisterForReflection;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
 
 
 @Getter
 @Setter
+@DynamoDbBean
+@NoArgsConstructor
+@AllArgsConstructor
 @RegisterForReflection
-@RequiredArgsConstructor
 public class User {
-  private Long id;
+
+  @Getter(onMethod_ = {@DynamoDbPartitionKey, @DynamoDbAttribute(value = "PK")})
+  private String pk;
+
+  @Getter(onMethod_ = {@DynamoDbSortKey, @DynamoDbAttribute(value = "SK")})
+  private String sk;
+
+  @Getter(onMethod_ = {@DynamoDbSortKey, @DynamoDbAttribute(value = "email")})
   private String email;
+
+  @Getter(onMethod_ = {@DynamoDbSortKey, @DynamoDbAttribute(value = "last_name")})
   private String lastName;
+
+  @Getter(onMethod_ = {@DynamoDbSortKey, @DynamoDbAttribute(value = "first_name")})
   private String firstName;
-  List<Category> categories = new ArrayList<>();
-  List<Transaction> transactions = new ArrayList<>();
-  List<Account> accounts = new ArrayList<>();
 }

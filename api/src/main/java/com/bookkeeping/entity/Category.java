@@ -1,24 +1,32 @@
 package com.bookkeeping.entity;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import io.quarkus.runtime.annotations.RegisterForReflection;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbAttribute;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbBean;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbPartitionKey;
+import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortKey;
 
 @Getter
 @Setter
+@DynamoDbBean
+@NoArgsConstructor
+@AllArgsConstructor
 @RegisterForReflection
-@RequiredArgsConstructor
 public class Category {
-  private Long id;
-  private User user;
+
+  @Getter(onMethod_ = {@DynamoDbPartitionKey, @DynamoDbAttribute(value = "PK")})
+  private String pk;
+
+  @Getter(onMethod_ = {@DynamoDbSortKey, @DynamoDbAttribute(value = "SK")})
+  private String sk;
+
+  @Getter(onMethod_ = {@DynamoDbSortKey, @DynamoDbAttribute(value = "name")})
   private String name;
+
+  @Getter(onMethod_ = {@DynamoDbSortKey, @DynamoDbAttribute(value = "description")})
   private String description;
-  private Set<Account> accounts = new HashSet<>();
-  private List<Transaction> transactions = new ArrayList<>();
 }
