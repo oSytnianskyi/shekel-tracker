@@ -34,6 +34,6 @@ public class RequestFilter implements ContainerRequestFilter {
   }
 
   private boolean shouldSkipFiltering(ContainerRequestContext context) {
-    return context.getUriInfo().getPath().contains(Endpoints.DATABASE);
+    return context.getUriInfo().getPath().contains("Endpoints.DATABASE");
   }
 }

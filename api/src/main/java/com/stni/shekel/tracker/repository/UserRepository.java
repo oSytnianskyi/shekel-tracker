@@ -1,5 +1,7 @@
 package com.stni.shekel.tracker.repository;
 
+import com.stni.shekel.tracker.entity.User;
+
 public interface UserRepository {
-  void test();
+  User findUserById(String uuid);
 }

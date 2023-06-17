@@ -58,7 +58,7 @@ test {
 compileJava {
     options.compilerArgs = [
             '-Amapstruct.unmappedTargetPolicy=ERROR',
-            '-Amapstruct.defaultComponentModel=default',
+            '-Amapstruct.defaultComponentModel=cdi',
             '-parameters'
     ]
     options.encoding = 'UTF-8'

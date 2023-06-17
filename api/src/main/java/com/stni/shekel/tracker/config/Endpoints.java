@@ -9,4 +9,5 @@ public class Endpoints {
   private static final String API_PREFIX_V1 = API + VERSION1;
 
   public static final String TEST = "/test";
+  public static final String USERS = API_PREFIX_V1 + "/users";
 }
