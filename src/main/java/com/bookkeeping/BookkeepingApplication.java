@@ -27,5 +27,4 @@ import javax.ws.rs.core.Application;
   )
 )
 public class BookkeepingApplication extends Application {
-  //Test line
 }
