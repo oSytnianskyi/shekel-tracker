@@ -61,3 +61,19 @@ quarkus:
             paths: /*
     oidc:
       enabled: 'true'
+
+    rest-client:
+      "auth0-token-api":
+        uri: https://shekel-tracker.eu.auth0.com/oauth/token
+        scope: javax.inject.Singleton
+      "auth0-m2m-api":
+        uri: https://shekel-tracker.eu.auth0.com/api/v2/users
+        scope: javax.inject.Singleton
+
+auth0:
+  credentials:
+    m2m:
+      client-id: ${AUTH_M2M_CLIENT_ID:authM2mClientId}
+      audience: ${AUTH_M2M_AUDIENCE:authM2mAudience}
+      grand-type: ${AUTH_M2M_GRAND_TYPE:authM2mGrandType}
+      client-secret: ${AUTH_M2M_CLIENT_SECRET:authM2mClientSecret}
