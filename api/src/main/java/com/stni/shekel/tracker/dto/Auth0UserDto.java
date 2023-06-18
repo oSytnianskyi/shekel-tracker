@@ -1,5 +1,10 @@
 package com.stni.shekel.tracker.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,8 +16,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @RegisterForReflection
-public class CreateUserDto {
+public class Auth0UserDto {
+
+  @JsonProperty("email")
   private String email;
-  private String firstName;
-  private String lastName;
+
+  @JsonProperty("identities")
+  List<Auth0IdentitiesDto> identities = new ArrayList<>();
 }

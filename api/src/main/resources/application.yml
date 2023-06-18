@@ -67,7 +67,7 @@ quarkus:
         uri: https://shekel-tracker.eu.auth0.com/oauth/token
         scope: javax.inject.Singleton
       "auth0-m2m-api":
-        uri: https://shekel-tracker.eu.auth0.com/api/v2/users
+        uri: https://shekel-tracker.eu.auth0.com/api/v2
         scope: javax.inject.Singleton
 
 auth0:

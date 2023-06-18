@@ -1,9 +1,9 @@
-package com.stni.shekel.tracker.service.local.impl;
+package com.stni.shekel.tracker.local.service.impl;
 
 import com.stni.shekel.tracker.entity.User;
+import com.stni.shekel.tracker.local.service.LocalJwtService;
+import com.stni.shekel.tracker.local.service.LocalUserService;
 import com.stni.shekel.tracker.repository.UserRepository;
-import com.stni.shekel.tracker.service.local.LocalJwtService;
-import com.stni.shekel.tracker.service.local.LocalUserService;
 
 import javax.enterprise.context.ApplicationScoped;
 
@@ -17,7 +17,12 @@ public class LocalUserServiceImpl implements LocalUserService {
 
   @Override
   public User getCurrentUser() {
-    String uuid = localJwtService.getCurrentUserUuid();
-    return userRepository.findUserById(uuid);
+    String email = localJwtService.getCurrentUserEmail();
+    return userRepository.findUserById(email);
+  }
+
+  @Override
+  public String getCurrentUserEmail() {
+    return localJwtService.getCurrentUserEmail();
   }
 }
