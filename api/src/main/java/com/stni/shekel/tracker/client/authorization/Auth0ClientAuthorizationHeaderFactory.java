@@ -35,7 +35,7 @@ public class Auth0ClientAuthorizationHeaderFactory implements ClientHeadersFacto
     return additionalHeaders;
   }
 
-  @CacheResult(cacheName = "time-tracker-token")
+  @CacheResult(cacheName = "auth0-m2m-token")
   String getToken() {
     String tokenFetchParams = getTokenFetchParam();
     Auth0TokenDto tokenDto = auth0TokenClient.getToken(tokenFetchParams);

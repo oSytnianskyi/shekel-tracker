@@ -1,5 +1,6 @@
 package com.stni.shekel.tracker.service.impl;
 
+import com.stni.shekel.tracker.dto.CreateUserDto;
 import com.stni.shekel.tracker.dto.CurrentUserDto;
 import com.stni.shekel.tracker.entity.User;
 import com.stni.shekel.tracker.mapper.UserMapper;
@@ -20,5 +21,10 @@ public class UserServiceImpl implements UserService {
   public CurrentUserDto getCurrentUser() {
     User user = localUserService.getCurrentUser();
     return userMapper.toDto(user);
+  }
+
+  @Override
+  public String createUser(CreateUserDto dto) {
+    return null;
   }
 }
