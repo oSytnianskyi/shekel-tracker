@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import io.quarkus.runtime.annotations.RegisterForReflection;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.DynamoDbSortK
 
 @Getter
 @Setter
+@Builder
 @DynamoDbBean
 @NoArgsConstructor
 @AllArgsConstructor
@@ -31,4 +33,13 @@ public class TransactionEntity {
 
   @Getter(onMethod_ = {@DynamoDbAttribute(value = "amount")})
   private BigDecimal amount;
+
+  @Getter(onMethod_ = {@DynamoDbAttribute(value = "user_id")})
+  private String userId;
+
+  @Getter(onMethod_ = {@DynamoDbAttribute(value = "category_name")})
+  private String categoryName;
+
+  @Getter(onMethod_ = {@DynamoDbAttribute(value = "category_id")})
+  private String categoryId;
 }

@@ -8,6 +8,5 @@ public class Endpoint {
   private static final String VERSION1 = "/v1";
   private static final String API_PREFIX_V1 = API + VERSION1;
 
-  public static final String TEST = "/test";
   public static final String TRANSACTIONS = API_PREFIX_V1 + "/transactions";
 }

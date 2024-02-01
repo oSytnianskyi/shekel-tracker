@@ -1,6 +1,7 @@
 package com.group.stnj.tracker.shekel.resource;
 
 import com.group.stnj.tracker.shekel.config.rest.Endpoint;
+import com.group.stnj.tracker.shekel.dto.CreateTransactionDto;
 import com.group.stnj.tracker.shekel.manager.TransactionManager;
 
 import javax.ws.rs.Consumes;
@@ -19,7 +20,8 @@ public class TransactionResource {
   private final TransactionManager transactionManager;
 
   @POST
-  public String create() {
-    return transactionManager.create();
+  @Path("/")
+  public String create(CreateTransactionDto dto) {
+    return transactionManager.create(dto);
   }
 }
