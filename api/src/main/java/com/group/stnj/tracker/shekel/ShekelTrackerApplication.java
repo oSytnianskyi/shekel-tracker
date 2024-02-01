@@ -1,4 +1,4 @@
-package com.stni.shekel.tracker;
+package com.group.stnj.tracker.shekel;
 
 import org.eclipse.microprofile.openapi.annotations.Components;
 import org.eclipse.microprofile.openapi.annotations.OpenAPIDefinition;
@@ -12,7 +12,7 @@ import javax.ws.rs.core.Application;
 
 @OpenAPIDefinition(
   info = @Info(
-    title = "Bookkeeping API",
+    title = "Shekel Tracker API",
     version = "1.0"
   ),
   security = @SecurityRequirement(name = "bearerAuth"),
@@ -26,5 +26,5 @@ import javax.ws.rs.core.Application;
     )
   )
 )
-public class BookkeepingApplication extends Application {
+public class ShekelTrackerApplication extends Application {
 }

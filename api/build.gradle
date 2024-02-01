@@ -4,7 +4,7 @@ plugins {
     id "net.ltgt.errorprone" version "2.0.2"
 }
 
-group 'com.stni'
+group 'com.stnj'
 version '1.0'
 
 repositories {
