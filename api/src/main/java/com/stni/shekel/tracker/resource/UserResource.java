@@ -1,6 +1,5 @@
 package com.stni.shekel.tracker.resource;
 
-import com.stni.shekel.tracker.config.Endpoints;
 import com.stni.shekel.tracker.dto.CurrentUserDto;
 import com.stni.shekel.tracker.service.UserService;
 
@@ -13,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 
 import lombok.RequiredArgsConstructor;
 
-@Path(Endpoints.USERS)
+@Path("/Endpoint.USERS")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @RequiredArgsConstructor

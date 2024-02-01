@@ -1,7 +1,6 @@
 package com.stni.shekel.tracker.filter;
 
 import com.stni.shekel.tracker.config.ContainerFilterConstants;
-import com.stni.shekel.tracker.config.Endpoints;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.MDC;
